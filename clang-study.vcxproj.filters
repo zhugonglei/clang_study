@@ -39,6 +39,9 @@
     <ClInclude Include="system.h">
       <Filter>头文件\system</Filter>
     </ClInclude>
+    <ClInclude Include="motor.h">
+      <Filter>头文件\device</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

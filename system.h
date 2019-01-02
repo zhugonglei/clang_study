@@ -27,7 +27,11 @@ public:
 			std::cout << std::endl;
 		}
 	}
+	void playBack()
+	{
+
+	}
 private:
 
 };
-extern std::shared_ptr<SystemData> sysData;
+extern SystemData* sysData;

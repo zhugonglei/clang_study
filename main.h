@@ -6,7 +6,7 @@
 void init();
 void autonomous();
 void opcontrol();
-extern std::shared_ptr<Chassis> chassis;
-extern std::shared_ptr<Generic> lift;
-extern std::shared_ptr<Generic> intake;
-extern std::shared_ptr<Generic> shoot;
+extern Chassis *chassis;
+extern Generic* lift;
+extern Generic* intake;
+extern Generic* shoot;
