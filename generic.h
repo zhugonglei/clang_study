@@ -20,6 +20,7 @@ public:
 	void set(const int pwm)
 	{
 		_pwm = pwm;
+		_pwm = std::clamp(_pwm, -127, 127);
 		for (auto &it : _motorList)
 			it.set(_pwm);
 	}

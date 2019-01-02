@@ -28,6 +28,7 @@ public:
 	void forward(const int pwm)
 	{
 		_pwm = pwm;
+		_pwm = std::clamp(_pwm, -127, 127);
 		set(_pwm ,_pwm);
 	}
 private:
