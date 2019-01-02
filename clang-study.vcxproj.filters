@@ -13,18 +13,48 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="头文件\chassis">
+      <UniqueIdentifier>{a635f53f-b6ec-4bdc-828d-a56b4ac5ec66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\generic">
+      <UniqueIdentifier>{cf95276f-67a1-4e1b-a270-35f95e81b5c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\system">
+      <UniqueIdentifier>{a4fe0a47-4cc0-454d-a435-8254cd17fd80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\device">
+      <UniqueIdentifier>{3ceb0b23-e706-403b-9705-3251498c44ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h">
+    <ClInclude Include="main.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="chassis.h">
+      <Filter>头文件\chassis</Filter>
+    </ClInclude>
+    <ClInclude Include="generic.h">
+      <Filter>头文件\generic</Filter>
+    </ClInclude>
+    <ClInclude Include="system.h">
+      <Filter>头文件\system</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="pch.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="clang-study.cpp">
+    <ClCompile Include="init.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="opcontrol.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="autonomous.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="obj.h">
+      <Filter>头文件\system</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
