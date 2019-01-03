@@ -1,18 +1,37 @@
 #include"main.h"
+#include "poten.h"
+#include <fstream> 
+#include <sstream>
 void opcontrol()
 {
-	size_t i = 0;
-
-	while (i<=100)
+	ncrapi::Poten poten(1, 5);
+	std::fstream fs("Text1.txt");
+	if (!fs.is_open())
+		std::cerr << "file open error" << std::endl;
+	std::string temp;
+	while(std::getline(fs, temp))
 	{
-		chassis->forward(127);
-		lift->set(50);
-		intake->set(-10);
-		shoot->set(20);
-		for (auto &it : sysData->_objData)
-			it->addRecoderData();
-		i++;
-		Sleep(100);
+		std::istringstream iss(temp);
+		int val;
+		iss >> val;
+		std::cout <<"输入值:"<<val <<"  角度传感器值:" << poten.get(val,1) << std::endl;;
+		poten.print();
+		Sleep(10);
 	}
-	sysData->showRecoderData();
+	fs.close();
+
+	//size_t i = 0;
+
+	//while (i<=100)
+	//{
+	//	chassis->forward(127);
+	//	lift->set(50);
+	//	intake->set(-10);
+	//	shoot->set(20);
+	//	for (auto &it : sysData->_objData)
+	//		it->addRecoderData();
+	//	i++;
+	//	Sleep(100);
+	//}
+	//sysData->showRecoderData();
 }

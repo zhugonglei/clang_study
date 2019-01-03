@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Chassis" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIhAAAAEAAAACAQQAAAAAAAAAgAAAAAAAEAAAAAA=</HashCode>
+      <FileName>chassis.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Generic" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAEIAAAAAQQBQAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>generic.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Obj" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>obj.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SystemData" Collapsed="true">
+    <Position X="5.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAFAAAAAAAAAgAAAAAAAMAAAAIAAAACAAAA=</HashCode>
+      <FileName>system.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Motor" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAgAAAQAAAAABAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>motor.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Poten" Collapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACABAAAAAggEAABSAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>poten.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

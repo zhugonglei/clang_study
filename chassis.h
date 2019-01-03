@@ -1,6 +1,7 @@
 #pragma once
 #include"system.h"
 #include"motor.h"
+#include <string>
 class Chassis:public Obj
 {
 public:

@@ -1,7 +1,7 @@
 #pragma once
 #include"system.h"
 #include"motor.h"
-
+#include <string>
 class Generic :public Obj
 {
 public:

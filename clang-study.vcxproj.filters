@@ -25,6 +25,9 @@
     <Filter Include="头文件\device">
       <UniqueIdentifier>{3ceb0b23-e706-403b-9705-3251498c44ec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\util">
+      <UniqueIdentifier>{8ec325f0-d5ce-40a5-8b2e-9e896c10d7e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -41,6 +44,12 @@
     </ClInclude>
     <ClInclude Include="motor.h">
       <Filter>头文件\device</Filter>
+    </ClInclude>
+    <ClInclude Include="poten.h">
+      <Filter>头文件\device</Filter>
+    </ClInclude>
+    <ClInclude Include="util.h">
+      <Filter>头文件\util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -59,5 +68,16 @@
     <ClCompile Include="obj.h">
       <Filter>头文件\system</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Text.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="Text1.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>
