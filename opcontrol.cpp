@@ -4,17 +4,19 @@
 #include <sstream>
 void opcontrol()
 {
+
+
 	ncrapi::Poten poten(1, 5);
 	std::fstream fs("Text1.txt");
 	if (!fs.is_open())
 		std::cerr << "file open error" << std::endl;
 	std::string temp;
-	while(std::getline(fs, temp))
+	while (std::getline(fs, temp))
 	{
 		std::istringstream iss(temp);
 		int val;
 		iss >> val;
-		std::cout <<"输入值:"<<val <<"  角度传感器值:" << poten.get(val,1) << std::endl;;
+		poten.get(val, 1);
 		poten.print();
 		Sleep(10);
 	}

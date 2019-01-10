@@ -44,8 +44,9 @@ namespace ncrapi {
 				_state = state;
 				if ((abs(temp) >= _threshold + 20 && _count > _maxDataNums ) || (copySign(temp) != state && abs(temp) >= 3))//如果变化超限 且记录数等于最大记录数
 				{
-					std::cerr << "数值变化超限! 模拟值:";
 					tempVal = (_lastData + _threshold * state);
+					std::cerr << "数值变化超限!输入值:"<< num<<" 模拟值:tempVal" << std::endl;
+				
 				}
 				else//变化没有超限
 				{

@@ -1,72 +1,75 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="源文件">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="头文件">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="资源文件">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="头文件\chassis">
+    <Filter Include="include">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="include\chassis">
       <UniqueIdentifier>{a635f53f-b6ec-4bdc-828d-a56b4ac5ec66}</UniqueIdentifier>
     </Filter>
-    <Filter Include="头文件\generic">
+    <Filter Include="include\generic">
       <UniqueIdentifier>{cf95276f-67a1-4e1b-a270-35f95e81b5c5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="头文件\system">
+    <Filter Include="include\system">
       <UniqueIdentifier>{a4fe0a47-4cc0-454d-a435-8254cd17fd80}</UniqueIdentifier>
     </Filter>
-    <Filter Include="头文件\device">
+    <Filter Include="include\device">
       <UniqueIdentifier>{3ceb0b23-e706-403b-9705-3251498c44ec}</UniqueIdentifier>
     </Filter>
-    <Filter Include="头文件\util">
+    <Filter Include="include\util">
       <UniqueIdentifier>{8ec325f0-d5ce-40a5-8b2e-9e896c10d7e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\filter">
+      <UniqueIdentifier>{173ce1a3-7292-46f0-8535-6993fec60fd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
-      <Filter>头文件</Filter>
+      <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="chassis.h">
-      <Filter>头文件\chassis</Filter>
+      <Filter>include\chassis</Filter>
     </ClInclude>
     <ClInclude Include="generic.h">
-      <Filter>头文件\generic</Filter>
+      <Filter>include\generic</Filter>
     </ClInclude>
     <ClInclude Include="system.h">
-      <Filter>头文件\system</Filter>
+      <Filter>include\system</Filter>
     </ClInclude>
     <ClInclude Include="motor.h">
-      <Filter>头文件\device</Filter>
+      <Filter>include\device</Filter>
     </ClInclude>
     <ClInclude Include="poten.h">
-      <Filter>头文件\device</Filter>
+      <Filter>include\device</Filter>
     </ClInclude>
     <ClInclude Include="util.h">
-      <Filter>头文件\util</Filter>
+      <Filter>include\util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>源文件</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="init.cpp">
-      <Filter>源文件</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="opcontrol.cpp">
-      <Filter>源文件</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="autonomous.cpp">
-      <Filter>源文件</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="obj.h">
-      <Filter>头文件\system</Filter>
+      <Filter>include\system</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
