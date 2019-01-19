@@ -90,6 +90,9 @@
     <ClInclude Include="C:\jsoncpp\include\json\writer.h">
       <Filter>include\json</Filter>
     </ClInclude>
+    <ClInclude Include="configRead.h">
+      <Filter>include\system</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -118,5 +121,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+    <None Include="example.json">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
 </Project>

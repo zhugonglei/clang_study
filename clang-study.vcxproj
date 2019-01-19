@@ -173,6 +173,7 @@
     <ClInclude Include="C:\jsoncpp\include\json\value.h" />
     <ClInclude Include="C:\jsoncpp\include\json\version.h" />
     <ClInclude Include="C:\jsoncpp\include\json\writer.h" />
+    <ClInclude Include="configRead.h" />
     <ClInclude Include="generic.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="chassis.h" />
@@ -194,6 +195,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+    <None Include="example.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

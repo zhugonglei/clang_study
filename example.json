@@ -1,0 +1,13 @@
+{
+  "你好": "allmightbe",
+  "plug-ins": [
+    "python",
+    "c++",
+    "ruby"
+  ],
+  "indent": {
+    "length": 3,
+    "use_space": true
+  },
+  "tab": null
+}
