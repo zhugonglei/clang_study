@@ -192,6 +192,7 @@
   <ItemGroup>
     <Text Include="Text.txt" />
     <Text Include="Text1.txt" />
+    <Text Include="chassis.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

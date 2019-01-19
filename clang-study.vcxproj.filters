@@ -118,6 +118,9 @@
     <Text Include="Text1.txt">
       <Filter>资源文件</Filter>
     </Text>
+    <Text Include="chassis.txt">
+      <Filter>资源文件</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

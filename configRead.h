@@ -7,8 +7,8 @@
 #include <sstream>
 #include <string>
 #include <type_traits>
+#define MAX_BUF_LEN 1024
 
-std::string cfg_path{ "config.txt" };
 
 //  Helper函数，如果字符串读取，则将字符串转换为bool
 //  true它返回true，否则返回false
@@ -42,36 +42,34 @@ class ConfigReader
 	// 返回true
 	bool parse_file()
 	{
-		size_t curr_line = 0;
+		size_t curr_line = 0;//计数器
 
-		std::fstream cfg_file{ cfg_path };
-		if (cfg_file.fail()) return false;
-
-		std::string line;
-		while (std::getline(cfg_file, line))
+		FILE* file = fopen("chassis.txt", "r");
+		if (file == nullptr)
+			return false;
+		char buf[MAX_BUF_LEN];
+		while (fgets(buf, MAX_BUF_LEN, file) != nullptr)//读取一行
 		{
+			std::string line = buf;
 			std::string key, val;
-			size_t del_idx = line.find('=');
-
+			size_t del_idx = line.find("=");
 			//我们每行只能有一个=
-			if (line.find('=', del_idx + 1) != std::string::npos)
+			if (line.find('=', del_idx + 1) != std::string::npos)//如果找到了第一个= 的后有还有=
 			{
-				std::cerr << "More than one '=' on line " << curr_line << std::endl;
-				std::cerr << "Skipping line..." << curr_line + 1 << std::endl;
+				std::cerr << "第 " << curr_line << " 超过一个=" << std::endl;
+				std::cerr << "跳转第 " << curr_line + 1 << " 行读取" << std::endl;
 				curr_line++;
 				continue;
 			}
-
 			//解析密钥和值
 			key = line.substr(0, del_idx);
 			val = line.substr(del_idx + 1, line.length());
-
+			std::cout << "key:" << key << " val:" << val << std::endl;
 			//插入容器
-			m_cfg_data[key] = val;
+		/*	m_cfg_data[key] = val;*/
 
 			curr_line++;
 		}
-
 		return true;
 	}
 
@@ -155,7 +153,7 @@ public:
 		return T(found_val);
 	}
 
-	// /实现Singleton模式
+	//实现单例
 	static ConfigReader* instance()
 	{
 		if (ConfigReader::s_instance == nullptr) ConfigReader::s_instance = new ConfigReader();
