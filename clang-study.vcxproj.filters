@@ -31,9 +31,6 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="include\json">
-      <UniqueIdentifier>{ab0a85d0-40fc-4077-b71e-d3d7cfc57550}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -56,39 +53,6 @@
     </ClInclude>
     <ClInclude Include="util.h">
       <Filter>include\util</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\jsoncpp\include\json\allocator.h">
-      <Filter>include\json</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\jsoncpp\include\json\assertions.h">
-      <Filter>include\json</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\jsoncpp\include\json\autolink.h">
-      <Filter>include\json</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\jsoncpp\include\json\config.h">
-      <Filter>include\json</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\jsoncpp\include\json\features.h">
-      <Filter>include\json</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\jsoncpp\include\json\forwards.h">
-      <Filter>include\json</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\jsoncpp\include\json\json.h">
-      <Filter>include\json</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\jsoncpp\include\json\reader.h">
-      <Filter>include\json</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\jsoncpp\include\json\value.h">
-      <Filter>include\json</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\jsoncpp\include\json\version.h">
-      <Filter>include\json</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\jsoncpp\include\json\writer.h">
-      <Filter>include\json</Filter>
     </ClInclude>
     <ClInclude Include="configRead.h">
       <Filter>include\system</Filter>
@@ -125,6 +89,9 @@
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
     <None Include="example.json">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="chassisFilter">
       <Filter>资源文件</Filter>
     </None>
   </ItemGroup>

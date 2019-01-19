@@ -1,6 +1,5 @@
 #include"main.h"
 #include "poten.h"
-#include <json.h>
 #include <fstream>
 #include "configRead.h"
 #define MAX_BUF_LEN 1024
@@ -20,45 +19,74 @@ void delAllMark(std::string &s, const std::string &mark)
 
 }
 using DataTypeMotor = std::vector<std::string>;                                     //每一个马达的配置参数
-using DataTypeMotorList =  std::vector<DataTypeMotor>;                         //马达组
+using DataTypeMotorList = std::vector<DataTypeMotor>;                         //马达组
 void opcontrol()
 {
 	DataTypeMotorList data;
-	size_t curr_line = 0;//计数器
-
 	FILE* file = fopen("chassis.txt", "r");
 	if (file == nullptr)
 		std::cerr << "文件打开错误" << std::endl;
 	char buf[MAX_BUF_LEN];
+	std::string line;
+
 	while (fgets(buf, MAX_BUF_LEN, file) != nullptr)//读取一行
 	{
-		std::string line = buf;
-		std::string key, val;
+		line = buf;
+		DataTypeMotor tempData;
 		delAllMark(line, " ");//删除多余的空格
-		size_t del_idx = line.find("=");
-		//我们每行只能有一个=
-		if (line.find('=', del_idx + 1) != std::string::npos)//如果找到了第一个= 的后有还有=
-		{
-			std::cerr << "第 " << curr_line << " 超过一个=" << std::endl;
-			std::cerr << "跳转第 " << curr_line + 1 << " 行读取" << std::endl;
-			curr_line++;
-			continue;
-		}
-
+		size_t del_idx = line.find("=");//记录等号的位置
 		//解析密钥和值
-		key = line.substr(0, del_idx);
-		val = line.substr(del_idx + 1, line.length());
+		tempData.push_back(line.substr(0, del_idx));//添加KEY的值
+		std::string val = line.substr(del_idx + 1, line.length());//添加VAL的值
+		size_t val_idx = val.find(",");//搜索VAL的值记住找点 "," 的位置
+		if (val_idx != std::string::npos)//如果搜到了逗号
+			while (1)
+			{
+				tempData.push_back(val.substr(0, val_idx));//添加从0到逗号的区域
+				val.erase(0, val_idx + 1);//删除逗号和逗号前的值
+				val_idx = val.find(",");//迭代 继续找,号 m
+				if (val_idx == std::string::npos)//如果最后没找到逗号了
+				{
+					tempData.push_back(val);//剩下的所有值全加进去
+					break;
+				}
+
+			}
+		else//没找到逗号就一个值咯
+			tempData.push_back(val);
 		//插入容器
-		data.push_back({key,val});
-		curr_line++;
+		data.push_back({ tempData });
 	}
+	fclose(file);
 	for (auto &it : data)
 	{
 		for (auto &it1 : it)
-			std::cout << it1;
-		std::cout << std::endl;
+			std::cout << it1 << " ";
+		//std::cout << std::endl;
 	}
-
+	FILE *outFile = fopen("chassisFilter", "w");
+	if (outFile == nullptr)
+		std::cerr << "文件保存失败" << std::endl;
+	for (auto &it : data)
+	{
+		std::string tempStr;//临时变量
+		for (auto &it1 : it)
+		{
+			if (it1 == it.front())//如果是第一个元素 KEY
+			{
+				tempStr = it1;
+				tempStr += "=";
+			}
+			else //VAL
+			{
+				tempStr += it1;
+				if (it1 != it.back())//最后一个值后面不加逗号
+					tempStr += ",";
+			}
+		}
+		fprintf(outFile, "%s", tempStr.c_str());//逐行录入
+	}
+	fclose(file);
 	//Json::Value root;
 	//Json::Reader reader;
 	//std::string test = "{\"name\" : \
