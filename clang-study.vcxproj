@@ -163,12 +163,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="configRead.h" />
+    <ClInclude Include="dataType.h" />
     <ClInclude Include="generic.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="chassis.h" />
     <ClInclude Include="system.h" />
     <ClInclude Include="motor.h" />
     <ClInclude Include="poten.h" />
+    <ClInclude Include="userconfig.h" />
     <ClInclude Include="util.h" />
   </ItemGroup>
   <ItemGroup>
@@ -179,12 +181,11 @@
     <ClCompile Include="opcontrol.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="chassis.txt" />
     <Text Include="Text.txt" />
     <Text Include="Text1.txt" />
-    <Text Include="chassis.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="chassisFilter" />
     <None Include="ClassDiagram.cd" />
     <None Include="example.json" />
   </ItemGroup>

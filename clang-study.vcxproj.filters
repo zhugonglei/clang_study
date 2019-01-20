@@ -57,6 +57,12 @@
     <ClInclude Include="configRead.h">
       <Filter>include\system</Filter>
     </ClInclude>
+    <ClInclude Include="dataType.h">
+      <Filter>include\system</Filter>
+    </ClInclude>
+    <ClInclude Include="userconfig.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -89,9 +95,6 @@
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
     <None Include="example.json">
-      <Filter>资源文件</Filter>
-    </None>
-    <None Include="chassisFilter">
       <Filter>资源文件</Filter>
     </None>
   </ItemGroup>

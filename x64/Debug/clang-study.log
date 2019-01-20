@@ -1,2 +1,6 @@
-﻿  opcontrol.cpp
-  clang-study.vcxproj -> d:\clang-study\x64\Debug\clang-study.exe
+﻿  autonomous.cpp
+  init.cpp
+  main.cpp
+  opcontrol.cpp
+  正在生成代码...
+  clang-study.vcxproj -> D:\clang_study\x64\Debug\clang-study.exe
