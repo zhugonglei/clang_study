@@ -31,6 +31,9 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="include\jsoncpp">
+      <UniqueIdentifier>{a629b5d2-524a-42e9-a218-97747f66172d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -63,6 +66,12 @@
     <ClInclude Include="userconfig.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="json-forwards.h">
+      <Filter>include\jsoncpp</Filter>
+    </ClInclude>
+    <ClInclude Include="json.h">
+      <Filter>include\jsoncpp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -79,6 +88,9 @@
     </ClCompile>
     <ClCompile Include="obj.h">
       <Filter>include\system</Filter>
+    </ClCompile>
+    <ClCompile Include="json.cpp">
+      <Filter>include\jsoncpp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

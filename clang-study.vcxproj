@@ -165,6 +165,7 @@
     <ClInclude Include="configRead.h" />
     <ClInclude Include="dataType.h" />
     <ClInclude Include="generic.h" />
+    <ClInclude Include="json.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="chassis.h" />
     <ClInclude Include="system.h" />
@@ -172,6 +173,7 @@
     <ClInclude Include="poten.h" />
     <ClInclude Include="userconfig.h" />
     <ClInclude Include="util.h" />
+    <ClInclude Include="json-forwards.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="autonomous.cpp" />
@@ -179,6 +181,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="obj.h" />
     <ClCompile Include="opcontrol.cpp" />
+    <ClCompile Include="json.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="chassis.txt" />
