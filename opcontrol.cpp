@@ -10,11 +10,11 @@ void opcontrol()
 	//								   {"最大旋转速度", "127"} };
 	//std::cout << CHASSIS_PRAGMA.toStyledString() << std::endl;
 
-	const char * stu = R"(  {
+	std::string stu= R"(  {
 "年龄" : 22,
 "height" : 1.78,
 "姓名" : "Denny",
-"number_array" : [1,2,3,4],
+"数组" : [1,2,3,4],
 "object" : 
 {
 "someone" : "Kelly",
@@ -44,13 +44,35 @@ void opcontrol()
 "string03"
 ]
 })";
-
-	Json::Reader reader;
 	Json::Value root;
-	if (reader.parse(stu, root))  // reader将Json字符串解析到root，root将包含Json里所有子元素  
-	{
-		std::cout <<"姓名:"<< root["姓名"].asString() << " 年龄: " << root["年龄"].asInt()<<" "<<root["object"] << std::endl;
-	}
+	Json::CharReaderBuilder jsreader;
+	std::unique_ptr<Json::CharReader> const reader(jsreader.newCharReader());
+	JSONCPP_STRING  err;
+
+	//失败
+
+	if (!reader->parse(stu.c_str(), stu.c_str()+stu.length(), &root, &err))
+		return;
+
+	std::string strName = root["数组"].asString();
+	int strAge = root["年龄"].asInt();
+	std::vector<int>v;
+	for (size_t i = 0; i < root["数组"].size(); i++)
+		v.push_back(root["数组"][i].asInt());
+	for (auto &it : v)
+		std::cout << it << std::endl;
+
+
+	std::cout << strName <<" "<< strAge << std::endl;
+	//Json::Reader reader;
+	//std::fstream fs("");
+	//if (reader.parse(stu, root))  // reader将Json字符串解析到root，root将包含Json里所有子元素  
+	//{
+	//	std::cout <<root<< std::endl;
+
+	//
+
+	//}
 
 	//Json::Value root;
 	//Json::Reader reader;
