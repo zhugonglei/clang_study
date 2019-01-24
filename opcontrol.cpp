@@ -57,8 +57,8 @@ void opcontrol()
 	std::string strName = root["数组"].asString();
 	int strAge = root["年龄"].asInt();
 	std::vector<int>v;
-	for (size_t i = 0; i < root["数组"].size(); i++)
-		v.push_back(root["数组"][i].asInt());
+	//for (size_t i = 0; i < root["数组"].size(); i++)
+	//	v.push_back(root["数组"].asInt());
 	for (auto &it : v)
 		std::cout << it << std::endl;
 
