@@ -6,30 +6,9 @@
 class Chassis :public Obj
 {
 public:
-	Chassis(const DataConfigList &pragma) : _name("底盘")
+	Chassis(const Json::Value &pragma) : _name("底盘")
 	{
-		for (auto &it : pragma)
-		{
-			if (it.at(0).find("马达") != std::string::npos)
-			{
-				_motorList.push_back(Motor(it));
-			}
-			else if (it.at(0).find("左右矫正比例") != std::string::npos)
-			{		_shootPosVal = stringToNum<double>(it.at(1));
-		}
-			else if (it.at(0).find("左右自瞄速度") != std::string::npos)
-			{
-				_shootSpeed = stringToNum<int>(it.at(1));
-			}
-			else if (it.at(0).find("遥控器矫正") != std::string::npos)
-			{
-				_joyThreshold = stringToNum<int>(it.at(1));
-			}
-			else if (it.at(0).find("最大旋转速度") != std::string::npos)
-			{
-				_maxRotateSpd = stringToNum<int>(it.at(1));
-			}
-		}
+		
 		sysData->rebuildSDcard(pragma, _name);
 		_sideNums = _motorList.size() / 2;
 		_gearing = _motorList.begin()->getGearSpeed();

@@ -1,9 +1,2 @@
-﻿  autonomous.cpp
-  init.cpp
-  main.cpp
-  obj.h
-  opcontrol.cpp
-  json.cpp
-  正在生成代码...
+﻿  init.cpp
   clang-study.vcxproj -> D:\clang_study\x64\Debug\clang-study.exe
-  clang-study.vcxproj -> D:\clang_study\x64\Debug\clang-study.pdb (部分 -> 完整 PDB)
