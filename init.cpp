@@ -7,6 +7,12 @@
 //Generic* lift;
 //Generic* intake;
 //Generic* shoot;
+void f(void* pragma)
+{
+	int* a = (int*)pragma;
+	int b = *a;
+	std::cout<<"val:"<<b<< std::endl;
+}
 void init()
 {
 std::string stu = R"({
@@ -57,6 +63,10 @@ std::string stu = R"({
 		std::cout << key[count] << " : " << it.asInt() << std::endl;
 		count++;
 	}
+	int b = 9000;
+	int c = 1900;
+	f(&b);
+	f(&c);
 	//for (auto &it:key) //±éÀújson³ÉÔ±
 	//{
 	//	std::string name = it;
