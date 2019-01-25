@@ -15,6 +15,8 @@ void f(void* pragma)
 }
 void init()
 {
+	for (int i = 1; i <= 10; i++)
+		std::cout << i % 2 << std::endl;
 std::string stu = R"({
   "机器人类型": "全能机",
   "队伍编号": "8982B",
