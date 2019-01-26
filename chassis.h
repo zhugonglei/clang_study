@@ -1,6 +1,7 @@
 #pragma once
 #include"system.h"
 #include"motor.h"
+#include "adi.h"
 #include <string>
 #include "util.h"
 class Chassis :public Obj
@@ -8,8 +9,11 @@ class Chassis :public Obj
 public:
 	Chassis(const Json::Value &pragma) : _name("µ×ÅÌ")
 	{
+		for (auto it : pragma["Âí´ï"])
+			_motorList.push_back(it);
+
 		
-		sysData->rebuildSDcard(pragma, _name);
+		//sysData->rebuildSDcard(pragma, _name);
 		_sideNums = _motorList.size() / 2;
 		_gearing = _motorList.begin()->getGearSpeed();
 		sysData->addObj(this);
@@ -26,14 +30,9 @@ public:
 		for (size_t i = 0; i < _sideNums; i++)
 			_motorList[i].set(left);
 		for (size_t i = _sideNums; i < _motorList.size(); i++)
-			_motorList[i].set(left);
+			_motorList[i].set(right);
 	}
-	//void forward(const int pwm)
-	//{
-	//	_pwm = pwm;
-	//	_pwm = std::clamp(_pwm, -127, 127);
-	//	set(_pwm ,_pwm);
-	//}
+
 protected:
 	const std::string _name;
 	std::vector<Motor> _motorList;

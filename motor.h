@@ -5,7 +5,7 @@ class Motor
 {
 public:
 
-	explicit Motor(const Json::Value& pragma) :
+	 Motor(const Json::Value& pragma) :
 		_port(pragma["端口"].asUInt()), _isRevase(pragma["正反"].asBool()),_gear(pragma["齿轮"].asUInt()),_name(pragma["名字"].asString())
 	{
 		init();
