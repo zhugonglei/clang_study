@@ -57,12 +57,6 @@
     <ClInclude Include="util.h">
       <Filter>include\util</Filter>
     </ClInclude>
-    <ClInclude Include="configRead.h">
-      <Filter>include\system</Filter>
-    </ClInclude>
-    <ClInclude Include="dataType.h">
-      <Filter>include\system</Filter>
-    </ClInclude>
     <ClInclude Include="userconfig.h">
       <Filter>include</Filter>
     </ClInclude>
@@ -74,6 +68,15 @@
     </ClInclude>
     <ClInclude Include="adi.h">
       <Filter>include\device</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="resource1.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="resource2.h">
+      <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -103,14 +106,19 @@
     <Text Include="Text1.txt">
       <Filter>资源文件</Filter>
     </Text>
-    <Text Include="chassis.txt">
-      <Filter>资源文件</Filter>
-    </Text>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
-    <None Include="test.json">
+    <None Include="save.json">
       <Filter>资源文件</Filter>
     </None>
+    <None Include="demo.json">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="clang-study.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

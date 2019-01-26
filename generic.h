@@ -5,10 +5,10 @@
 class Generic :public Obj
 {
 public:
-	Generic(const std::vector<Motor> &motorList,const std::string name) :_motorList(motorList),_name(name)
+	Generic(const Json::Value& pragma,const std::string name) :_name(name)
 	{
-		if (_motorList.size() == 0)
-			std::cerr<<_name << "达设定数量必须大于0!" << std::endl;
+		for (auto& it : pragma["马达"])
+			_motorList.push_back(it);
 		sysData->addObj(this);
 		std::cout << _name << "类创建完成" << std::endl;
 	}
@@ -28,6 +28,6 @@ private:
 	const std::string _name;
 	 std::vector<Motor> _motorList;
 	size_t _motorsNum = 0;
-	int _pwm;
+	int _pwm=0;
 
 };

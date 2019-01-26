@@ -11,17 +11,6 @@ void init()
 {
 
 
-
-	Json::Value val;
-	Json::CharReaderBuilder jsreader;
-	std::unique_ptr<Json::CharReader> const reader(jsreader.newCharReader());
-	JSONCPP_STRING  err;
-	if (!reader->parse(stu.c_str(), stu.c_str() + stu.length(), &val, &err))
-	{
-		std::cerr << "²ÎÊı¶ÁÈ¡´íÎó,Çë×¢Òâ¸ñÊ½" << std::endl;
-		return;
-	}
-
 	//Motor a(val["µ×ÅÌ"]["Âí´ï"][3]);
 	//ADI gyro(val["µ×ÅÌ"]["ADI"][0]);
 	//on::Value::Members key = val["µ×ÅÌ"]["Âí´ï"]["×óÇ°"].getMemberNames();
@@ -40,8 +29,8 @@ void init()
 		//	int flag = val[it].asInt();
 		//	std::cout << name << ":" << flag << std::endl;
 		//}
-	sysData = new SystemData();
-	chassis = new Chassis(val["µ×ÅÌ"]);
+	sysData = new SystemData(jsonData);
+	chassis = new Chassis(sysData->jsonVal["µ×ÅÌ"]);
 	//lift = new Generic({ Motor{5,-1} }, "Éı½µ");
 	//intake = new Generic({ Motor{6,-1} }, "ÎüÍÂ");
 	//shoot = new Generic({ Motor{7,-1}, Motor{8,1} }, "µ¯Éä");

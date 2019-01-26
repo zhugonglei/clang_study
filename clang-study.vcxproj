@@ -115,6 +115,7 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -162,12 +163,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="configRead.h" />
-    <ClInclude Include="dataType.h" />
     <ClInclude Include="generic.h" />
     <ClInclude Include="json.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="chassis.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="resource1.h" />
+    <ClInclude Include="resource2.h" />
     <ClInclude Include="system.h" />
     <ClInclude Include="motor.h" />
     <ClInclude Include="poten.h" />
@@ -185,15 +187,23 @@
     <ClCompile Include="json.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="chassis.txt" />
     <Text Include="Text.txt" />
     <Text Include="Text1.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
-    <None Include="test.json" />
+    <None Include="demo.json" />
+    <None Include="save.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="clang-study.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>
