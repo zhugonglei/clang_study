@@ -72,6 +72,9 @@
     <ClInclude Include="json.h">
       <Filter>include\jsoncpp</Filter>
     </ClInclude>
+    <ClInclude Include="adi.h">
+      <Filter>include\device</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
