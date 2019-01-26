@@ -5,7 +5,7 @@ class ADI
 {
 public:
 
-	explicit ADI(const Json::Value& pragma) :
+	 ADI(const Json::Value& pragma) :
 		_port(pragma["¶Ë¿Ú"].asUInt()), _name(pragma["Ãû×Ö"].asString())
 	{
 		init();

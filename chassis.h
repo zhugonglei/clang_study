@@ -7,12 +7,13 @@
 class Chassis :public Obj
 {
 public:
-	Chassis(const Json::Value &pragma) : _name("底盘")
+	Chassis(const Json::Value &pragma) : _name("底盘"),_gyro(pragma["ADI"][0])
 	{
-		for (auto it : pragma["马达"])
+		for (auto &it : pragma["马达"])
 			_motorList.push_back(it);
-
-		
+		for (auto& it : pragma["参数"])
+			for (auto& it1 : it.getMemberNames())
+				std::cout << it1 << std::endl;
 		//sysData->rebuildSDcard(pragma, _name);
 		_sideNums = _motorList.size() / 2;
 		_gearing = _motorList.begin()->getGearSpeed();
@@ -36,10 +37,12 @@ public:
 protected:
 	const std::string _name;
 	std::vector<Motor> _motorList;
+
 	double _shootPosVal = 1.0;
 	int _shootSpeed = 10, _joyThreshold = 10, _maxRotateSpd = 127;
-
+	ADI _gyro;
 	size_t _sideNums = 0; //半边马达数量
-	int _pwm[2];          //0 左边pwm 1 右边pwm
+	int _pwm[2] = { 0 };          //0 左边pwm 1 右边pwm
 	size_t _gearing;      //齿轮最大速度
+	std::vector<int> userSpeed;
 };

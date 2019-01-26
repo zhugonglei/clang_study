@@ -109,7 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
-    <None Include="example.json">
+    <None Include="test.json">
       <Filter>资源文件</Filter>
     </None>
   </ItemGroup>
