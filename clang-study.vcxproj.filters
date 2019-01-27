@@ -99,7 +99,6 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
     <None Include="save.json">
       <Filter>资源文件</Filter>
     </None>

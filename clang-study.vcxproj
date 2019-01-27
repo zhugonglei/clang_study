@@ -188,7 +188,6 @@
     <Text Include="Text1.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
     <None Include="demo.json" />
     <None Include="save.json" />
   </ItemGroup>
