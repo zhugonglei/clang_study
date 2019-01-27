@@ -106,7 +106,7 @@ public:
 	//	}
 	//}
 
-	std::tring UTF8ToGB(const char* str)
+	std::string UTF8ToGB(const char* str)
 	{
 		std::string result;
 		WCHAR* strSrc;
@@ -149,12 +149,13 @@ public:
 			std::cerr << " 保存失败" << std::endl;
 			return false;
 		}
-		std::ostringstream os;
+	/*	std::ostringstream os;
 		std::unique_ptr<Json::StreamWriter> writer(builder.newStreamWriter());
-		writer->write(jsonVal, &os);
-		//std::string tempStr= UTF8ToGBK(jsonVal.toStyledString());
-		std::cout << os.str() << std::endl;
-		fprintf(file, "%s", os.str().c_str()); //逐行录入
+		writer->write(jsonVal, &os);*/
+		//fprintf(file, "%s", os.str().c_str()); //逐行录入
+		std::string tempStr= jsonVal.toStyledString();
+		std::cout << tempStr << std::endl;
+		fprintf(file, "%s", tempStr.c_str()); //逐行录入
 		fclose(file);
 		return true;
 	}

@@ -7,13 +7,25 @@
 class Chassis :public Obj
 {
 public:
-	Chassis(const Json::Value &pragma) : _name("底盘"),_gyro(pragma["ADI"][0])
+	Chassis(const Json::Value& pragma) : _name("底盘"), _gyro(pragma["ADI"][0])
 	{
-		for (auto &it : pragma["马达"])
+		for (auto& it : pragma["马达"])
 			_motorList.push_back(it);
+		//遍历所有参数
 		for (auto& it : pragma["参数"])
+		{
 			for (auto& it1 : it.getMemberNames())
-				std::cout << it1 << std::endl;
+			{
+				if (it1 == "自定义手感")
+					for (auto& it2 : it[it1])
+					{
+						std::cout << it2.asInt() << std::endl;
+						break;
+					}
+			}
+		}
+		pragma["111"];
+
 		//sysData->rebuildSDcard(pragma, _name);
 		_sideNums = _motorList.size() / 2;
 		_gearing = _motorList.begin()->getGearSpeed();
