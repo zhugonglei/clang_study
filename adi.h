@@ -4,6 +4,10 @@
 class ADI
 {
 public:
+	ADI(const uint8_t port, const std::string name) :	_port(port), _name(name)
+	{
+		init();
+	}
 
 	 ADI(const Json::Value& pragma ,const std::string name) :
 		_port(pragma[name].asUInt()), _name(name)
