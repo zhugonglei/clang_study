@@ -30,7 +30,7 @@ void init()
 		//	std::cout << name << ":" << flag << std::endl;
 		//}
 	sysData = new SystemData(jsonData);
-	//chassis = new Chassis(sysData->jsonVal["µ×ÅÌ"]);
+	chassis = new Chassis(sysData->jsonVal["µ×ÅÌ"]);
 	//lift = new Generic({ Motor{5,-1} }, "Éı½µ");
 	//intake = new Generic({ Motor{6,-1} }, "ÎüÍÂ");
 	//shoot = new Generic({ Motor{7,-1}, Motor{8,1} }, "µ¯Éä");
