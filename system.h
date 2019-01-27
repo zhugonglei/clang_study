@@ -105,21 +105,27 @@ public:
 	//			std::cout << name << " config文件创建成功" << std::endl;
 	//	}
 	//}
-	std::string UTF8ToGBK(const std::string& strUTF8)
+
+	std::tring UTF8ToGB(const char* str)
 	{
-		int len = MultiByteToWideChar(CP_UTF8, 0, strUTF8.c_str(), -1, nullptr, 0);
-		WCHAR* wszGBK = new WCHAR[len + 1];
-		memset(wszGBK, 0, len * 2 + 2);
-		MultiByteToWideChar(CP_UTF8, 0, (LPCCH)strUTF8.c_str(), -1, wszGBK, len);
-		len = WideCharToMultiByte(CP_ACP, 0, wszGBK, -1, nullptr, 0, nullptr, nullptr);
-		char* szGBK = new char[len + 1];
-		memset(szGBK, 0, len + 1);
-		WideCharToMultiByte(CP_ACP, 0, wszGBK, -1, szGBK, len, nullptr, nullptr);
-		std::string strTemp(szGBK);
-		delete[]szGBK;
-		delete[]wszGBK;
-		return strTemp;
+		std::string result;
+		WCHAR* strSrc;
+		LPSTR szRes;
+
+		int i = MultiByteToWideChar(CP_UTF8, 0, str, -1, nullptr, 0);
+		strSrc = new WCHAR[i + 1];
+		MultiByteToWideChar(CP_UTF8, 0, str, -1, strSrc, i);
+
+		i = WideCharToMultiByte(CP_ACP, 0, strSrc, -1, nullptr, 0, nullptr, nullptr);
+		szRes = new CHAR[i + 1];
+		WideCharToMultiByte(CP_ACP, 0, strSrc, -1, szRes, i, nullptr, nullptr);
+
+		result = szRes;
+		delete[]strSrc;
+		delete[]szRes;
+		return result;
 	}
+
 	std::string GBKToUTF8(const std::string& strGBK)
 	{
 		std::string strOutUTF8 = "";

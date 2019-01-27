@@ -4935,7 +4935,9 @@ namespace Json {
 		result[3] = hex2[2 * lo + 1];
 		return result;
 	}
-
+	/**
+	 * 这里陈昱安做了修改 改成中文字符串
+	 */
 	static String valueToQuotedStringN(const char *value, unsigned length)
 	{
 		if (value == nullptr)
@@ -4986,25 +4988,28 @@ namespace Json {
 				// sequence from occurring.
 			default:
 			{
-				unsigned int cp = utf8ToCodepoint(c, end);
-				// don't escape non-control characters
-				// (short escape sequence are applied above)
-				if (cp < 0x80 && cp >= 0x20)
-					result += static_cast<char>(cp);
-				else if (cp < 0x10000)
-				{ // codepoint is in Basic Multilingual Plane
-					result += "\\u";
-					result += toHex16Bit(cp);
-				}
-				else
-				{ // codepoint is not in Basic Multilingual Plane
-					// convert to surrogate pair first
-					cp -= 0x10000;
-					result += "\\u";
-					result += toHex16Bit((cp >> 10) + 0xD800);
-					result += "\\u";
-					result += toHex16Bit((cp & 0x3FF) + 0xDC00);
-				}
+				//这里是我自定修改
+				//unsigned int cp = utf8ToCodepoint(c, end);
+				//// don't escape non-control characters
+				//// (short escape sequence are applied above)
+				//if (cp < 0x80 && cp >= 0x20)
+				//	result += static_cast<char>(cp);
+				//else if (cp < 0x10000)
+				//{ // codepoint is in Basic Multilingual Plane
+				//	result += "\\u";
+				//	result += toHex16Bit(cp);
+				//}
+				//else
+				//{ // codepoint is not in Basic Multilingual Plane
+				//	// convert to surrogate pair first
+				//	cp -= 0x10000;
+				//	result += "\\u";
+				//	result += toHex16Bit((cp >> 10) + 0xD800);
+				//	result += "\\u";
+				//	result += toHex16Bit((cp & 0x3FF) + 0xDC00);
+				//}
+				result += *c;
+				break;
 			}
 			break;
 			}
