@@ -5,8 +5,8 @@ class ADI
 {
 public:
 
-	 ADI(const Json::Value& pragma) :
-		_port(pragma["¶Ë¿Ú"].asUInt()), _name(pragma["Ãû×Ö"].asString())
+	 ADI(const Json::Value& pragma ,const std::string name) :
+		_port(pragma[name].asUInt()), _name(name)
 	{
 		init();
 	}

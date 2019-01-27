@@ -7,7 +7,7 @@
 class Chassis :public Obj
 {
 public:
-	Chassis(const Json::Value &pragma) : _name("╣вел"),_gyro(pragma["ADI"][0])
+	Chassis(const Json::Value &pragma) : _name("╣вел"),_gyro(pragma["ADI"],"мсбщрг")
 	{
 		for (auto &it : pragma["бМ╢О"])
 			_motorList.push_back(it);

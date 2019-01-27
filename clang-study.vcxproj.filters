@@ -57,9 +57,6 @@
     <ClInclude Include="util.h">
       <Filter>include\util</Filter>
     </ClInclude>
-    <ClInclude Include="userconfig.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="json-forwards.h">
       <Filter>include\jsoncpp</Filter>
     </ClInclude>
@@ -69,13 +66,7 @@
     <ClInclude Include="adi.h">
       <Filter>include\device</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="resource1.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="resource2.h">
+    <ClInclude Include="userconfig.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
@@ -115,10 +106,5 @@
     <None Include="demo.json">
       <Filter>资源文件</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="clang-study.rc">
-      <Filter>资源文件</Filter>
-    </ResourceCompile>
   </ItemGroup>
 </Project>
