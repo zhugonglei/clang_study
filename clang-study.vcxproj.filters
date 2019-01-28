@@ -34,6 +34,9 @@
     <Filter Include="include\jsoncpp">
       <UniqueIdentifier>{a629b5d2-524a-42e9-a218-97747f66172d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\pid">
+      <UniqueIdentifier>{27f0bd5b-b7ff-4536-a997-902d7cbfa3c9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -69,6 +72,9 @@
     <ClInclude Include="userconfig.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="pid.h">
+      <Filter>include\pid</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -99,6 +105,7 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="save.json">
       <Filter>资源文件</Filter>
     </None>

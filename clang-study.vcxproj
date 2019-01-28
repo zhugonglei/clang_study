@@ -167,6 +167,7 @@
     <ClInclude Include="json.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="chassis.h" />
+    <ClInclude Include="pid.h" />
     <ClInclude Include="system.h" />
     <ClInclude Include="motor.h" />
     <ClInclude Include="poten.h" />
@@ -188,6 +189,7 @@
     <Text Include="Text1.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="demo.json" />
     <None Include="save.json" />
   </ItemGroup>

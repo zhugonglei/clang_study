@@ -22,6 +22,8 @@ public:
 		//}
 		readSDcard();
 		saveData();
+		//printJson(jsonVal["底盘"]["PID参数"]);//不能打印进去以后的数组
+		//printJsonII(jsonVal["底盘"]["PID参数"]["前后pid"]);
 	}
 	std::vector<std::vector<double>> _recoderData;
 	std::vector<Obj*> _objData;
@@ -105,21 +107,27 @@ public:
 	//			std::cout << name << " config文件创建成功" << std::endl;
 	//	}
 	//}
-	std::string UTF8ToGBK(const std::string& strUTF8)
+
+	std::string UTF8ToGB(const char* str)
 	{
-		int len = MultiByteToWideChar(CP_UTF8, 0, strUTF8.c_str(), -1, nullptr, 0);
-		WCHAR* wszGBK = new WCHAR[len + 1];
-		memset(wszGBK, 0, len * 2 + 2);
-		MultiByteToWideChar(CP_UTF8, 0, (LPCCH)strUTF8.c_str(), -1, wszGBK, len);
-		len = WideCharToMultiByte(CP_ACP, 0, wszGBK, -1, nullptr, 0, nullptr, nullptr);
-		char* szGBK = new char[len + 1];
-		memset(szGBK, 0, len + 1);
-		WideCharToMultiByte(CP_ACP, 0, wszGBK, -1, szGBK, len, nullptr, nullptr);
-		std::string strTemp(szGBK);
-		delete[]szGBK;
-		delete[]wszGBK;
-		return strTemp;
+		std::string result;
+		WCHAR* strSrc;
+		LPSTR szRes;
+
+		int i = MultiByteToWideChar(CP_UTF8, 0, str, -1, nullptr, 0);
+		strSrc = new WCHAR[i + 1];
+		MultiByteToWideChar(CP_UTF8, 0, str, -1, strSrc, i);
+
+		i = WideCharToMultiByte(CP_ACP, 0, strSrc, -1, nullptr, 0, nullptr, nullptr);
+		szRes = new CHAR[i + 1];
+		WideCharToMultiByte(CP_ACP, 0, strSrc, -1, szRes, i, nullptr, nullptr);
+
+		result = szRes;
+		delete[]strSrc;
+		delete[]szRes;
+		return result;
 	}
+
 	std::string GBKToUTF8(const std::string& strGBK)
 	{
 		std::string strOutUTF8 = "";
@@ -146,11 +154,85 @@ public:
 		std::ostringstream os;
 		std::unique_ptr<Json::StreamWriter> writer(builder.newStreamWriter());
 		writer->write(jsonVal, &os);
-		//std::string tempStr= UTF8ToGBK(jsonVal.toStyledString());
-		std::cout << os.str() << std::endl;
 		fprintf(file, "%s", os.str().c_str()); //逐行录入
+		//std::string tempStr= jsonVal.toStyledString();
+		//fprintf(file, "%s", tempStr.c_str()); //逐行录入
 		fclose(file);
 		return true;
+	}
+	void 序列化jsonData()
+	{
+
+
+	}
+	//递归打印 不能打印带KEY的数组
+	void printJson(Json::Value  data)
+	{
+		Json::Value::Members mem = data.getMemberNames();
+		for (auto iter = mem.begin(); iter != mem.end(); iter++)
+		{
+			std::cout << *iter << "\t: ";
+			if (data[*iter].type() == Json::objectValue)
+			{
+				std::cout << std::endl;
+				printJson(data[*iter]);
+			}
+			else if (data[*iter].type() == Json::arrayValue)
+			{
+				std::cout << std::endl;
+				auto cnt = data[*iter].size();
+				for (auto i = 0; i < cnt; i++)
+				{
+					printJson(data[*iter][i]);
+				}
+			}
+			else if (data[*iter].type() == Json::stringValue)
+			{
+				std::cout << data[*iter].asString() << std::endl;
+			}
+			else if (data[*iter].type() == Json::realValue)
+			{
+				std::cout << data[*iter].asDouble() << std::endl;
+			}
+			else if (data[*iter].type() == Json::uintValue)
+			{
+				std::cout << data[*iter].asUInt() << std::endl;
+			}
+			else
+			{
+				std::cout << data[*iter].asInt() << std::endl;
+			}
+		}
+		return;
+	}
+	void printJsonII(Json::Value  data)
+	{
+		Json::Value::Members members;
+		members = data.getMemberNames();   // 获取所有key的值
+		for (Json::Value::Members::iterator iterMember = members.begin(); iterMember != members.end(); iterMember++)   // 遍历每个key
+		{
+			std::string strKey = *iterMember;
+			if (data[strKey.c_str()].isString())
+			{
+				std::string strVal = data[strKey.c_str()].asString();
+				std::cout << strKey.c_str() << ":" << strVal.c_str() << std::endl;
+			}
+			else if (data[strKey.c_str()].isInt())
+			{
+				int iVal = data[strKey.c_str()].asInt();
+				std::cout << strKey.c_str() << ":" << iVal << std::endl;
+			}
+			else if (data[strKey.c_str()].isDouble())
+			{
+				double dVal = data[strKey.c_str()].asDouble();
+				std::cout << strKey.c_str() << ":" << dVal << std::endl;
+			}
+			else
+			{
+				std::string strVal = data[strKey.c_str()].toStyledString();
+				std::cout << strKey.c_str() << ":" << strVal.c_str() << std::endl;
+			}
+		}
 	}
 private:
 };
