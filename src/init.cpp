@@ -1,9 +1,7 @@
-#include "json.hpp"
 #include "main.h"
 #include "testconfig.hpp"
 #include <iostream>
 
-using json = nlohmann::json;
 // SystemData* sysData;
 // Chassis* chassis;
 // Generic* lift;
@@ -12,16 +10,8 @@ using json = nlohmann::json;
 
 void init()
 {
-    // #if defined XXX
-    std::cout << "你好世界" << std::endl;
-    // #else
 
-    // #endif
-    //   json jsonData = {"撒旦法", 6, "暗示法的", 8};
-    //   std::cout << jsonData[0] << std::endl;
-    //��������е�һ��Ԫ��"a"��Ӧ�ļ�ֵ
-    // std::for_each(jsonData.begin(), jsonData.end(), [](auto it) {std::cout <<
-    // it << std::endl; });
+    std::for_each(userData.begin(), userData.end(), [](auto it) { std::cout << it << std::endl; });
 
     // Motor a(val["����"]["���"][3]);
     // ADI gyro(val["����"]["ADI"][0]);
