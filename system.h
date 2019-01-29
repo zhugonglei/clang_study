@@ -4,11 +4,12 @@
 #include <vector>
 #include"obj.h"
 #include <memory>
-#include "json.h"
+#include "json.hpp"
+using Json = nlohmann::json;
 class SystemData
 {
 public:
-	Json::Value jsonVal;//根数据
+	Json::value jsonVal;//根数据
 	Json::CharReaderBuilder jsreader;//读取器
 	Json::StreamWriterBuilder  builder;//写入器
 	JSONCPP_STRING  jsonErr;//异常流

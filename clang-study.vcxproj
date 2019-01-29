@@ -164,7 +164,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="generic.h" />
-    <ClInclude Include="json.h" />
+    <ClInclude Include="json.hpp" />
     <ClInclude Include="main.h" />
     <ClInclude Include="chassis.h" />
     <ClInclude Include="pid.h" />
@@ -173,7 +173,6 @@
     <ClInclude Include="poten.h" />
     <ClInclude Include="userconfig.h" />
     <ClInclude Include="util.h" />
-    <ClInclude Include="json-forwards.h" />
     <ClInclude Include="adi.h" />
   </ItemGroup>
   <ItemGroup>
@@ -182,14 +181,12 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="obj.h" />
     <ClCompile Include="opcontrol.cpp" />
-    <ClCompile Include="json.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Text.txt" />
     <Text Include="Text1.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
     <None Include="demo.json" />
     <None Include="save.json" />
   </ItemGroup>

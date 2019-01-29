@@ -60,12 +60,6 @@
     <ClInclude Include="util.h">
       <Filter>include\util</Filter>
     </ClInclude>
-    <ClInclude Include="json-forwards.h">
-      <Filter>include\jsoncpp</Filter>
-    </ClInclude>
-    <ClInclude Include="json.h">
-      <Filter>include\jsoncpp</Filter>
-    </ClInclude>
     <ClInclude Include="adi.h">
       <Filter>include\device</Filter>
     </ClInclude>
@@ -74,6 +68,9 @@
     </ClInclude>
     <ClInclude Include="pid.h">
       <Filter>include\pid</Filter>
+    </ClInclude>
+    <ClInclude Include="json.hpp">
+      <Filter>include\jsoncpp</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -92,9 +89,6 @@
     <ClCompile Include="obj.h">
       <Filter>include\system</Filter>
     </ClCompile>
-    <ClCompile Include="json.cpp">
-      <Filter>include\jsoncpp</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Text.txt">
@@ -105,7 +99,6 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
     <None Include="save.json">
       <Filter>资源文件</Filter>
     </None>

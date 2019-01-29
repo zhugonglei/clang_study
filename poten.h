@@ -2,7 +2,7 @@
 #include <iostream>
 #include <algorithm>
 #include <string>
-#include"util.h"
+#include "util.h"
 namespace ncrapi {
 	class Poten
 	{

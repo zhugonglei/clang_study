@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
-#include "json.h"
+#include "json.hpp"
+using Json = nlohmann::json;
 class Motor
 {
 public:
