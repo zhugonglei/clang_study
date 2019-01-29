@@ -1,240 +1,237 @@
-#define _CRT_SECURE_NO_WARNINGS
 #pragma once
-#include <iostream>
-#include <vector>
-#include"obj.h"
-#include <memory>
 #include "json.hpp"
-using Json = nlohmann::json;
+#include "obj.h"
+#include <iostream>
+#include <memory>
+#include <vector>
+
 class SystemData
 {
-public:
-	Json::value jsonVal;//¸ùÊý¾Ý
-	Json::CharReaderBuilder jsreader;//¶ÁÈ¡Æ÷
-	Json::StreamWriterBuilder  builder;//Ð´ÈëÆ÷
-	JSONCPP_STRING  jsonErr;//Òì³£Á÷
-	SystemData(std::string jsonData)
-	{
-		//std::unique_ptr<Json::CharReader> const reader(jsreader.newCharReader());
-		//if (!reader->parse(jsonData.c_str(), jsonData.c_str() + jsonData.length(), &jsonVal, &jsonErr))
-		//{
-		//	std::cerr << "json½âÎö´íÎó" << std::endl;
-		//	return;
-		//}
-		readSDcard();
-		saveData();
-		//printJson(jsonVal["µ×ÅÌ"]["PID²ÎÊý"]);//²»ÄÜ´òÓ¡½øÈ¥ÒÔºóµÄÊý×é
-		//printJsonII(jsonVal["µ×ÅÌ"]["PID²ÎÊý"]["Ç°ºópid"]);
-	}
-	std::vector<std::vector<double>> _recoderData;
-	std::vector<Obj*> _objData;
-	SystemData() { std::cout << "sysData create successful" << std::endl; }
-	~SystemData() = default;
-	void addObj(Obj* obj)
-	{
-		_objData.push_back(obj);
-	}
-	void addRecoderData(std::vector<double> data)
-	{
-		_recoderData.push_back(data);
-	}
-	void showRecoderData()
-	{
-		for (auto& it1 : _recoderData)
-		{
-			for (auto& it2 : it1)
-				std::cout << it2 << ";";
-			std::cout << std::endl;
-		}
-	}
-	bool readSDcard()
-	{
-		FILE* file = fopen("demo.json", "r");
-		if (file == nullptr)
-		{
-			std::cerr << "ÎÄ¼þ´ò¿ª´íÎó" << std::endl;
-			return false;
-		}
-		char buf[1024];
-		std::string line;
-		while (fgets(buf, 1024, file) != nullptr) //¶ÁÈ¡Ò»ÐÐ
-			line += buf;
-		//std::cout << line << std::endl;
+  public:
+    Json::value jsonVal;               //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    Json::CharReaderBuilder jsreader;  //ï¿½ï¿½È¡ï¿½ï¿½
+    Json::StreamWriterBuilder builder; //Ð´ï¿½ï¿½ï¿½ï¿½
+    JSONCPP_STRING jsonErr;            //ï¿½ì³£ï¿½ï¿½
+    SystemData(std::string jsonData)
+    {
+        //std::unique_ptr<Json::CharReader> const reader(jsreader.newCharReader());
+        //if (!reader->parse(jsonData.c_str(), jsonData.c_str() + jsonData.length(), &jsonVal, &jsonErr))
+        //{
+        //	std::cerr << "jsonï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" << std::endl;
+        //	return;
+        //}
+        readSDcard();
+        saveData();
+        //printJson(jsonVal["ï¿½ï¿½ï¿½ï¿½"]["PIDï¿½ï¿½ï¿½ï¿½"]);//ï¿½ï¿½ï¿½Ü´ï¿½Ó¡ï¿½ï¿½È¥ï¿½Ôºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        //printJsonII(jsonVal["ï¿½ï¿½ï¿½ï¿½"]["PIDï¿½ï¿½ï¿½ï¿½"]["Ç°ï¿½ï¿½pid"]);
+    }
+    std::vector<std::vector<double>> _recoderData;
+    std::vector<Obj *> _objData;
+    SystemData() { std::cout << "sysData create successful" << std::endl; }
+    ~SystemData() = default;
+    void addObj(Obj *obj)
+    {
+        _objData.push_back(obj);
+    }
+    void addRecoderData(std::vector<double> data)
+    {
+        _recoderData.push_back(data);
+    }
+    void showRecoderData()
+    {
+        for (auto &it1 : _recoderData)
+        {
+            for (auto &it2 : it1)
+                std::cout << it2 << ";";
+            std::cout << std::endl;
+        }
+    }
+    bool readSDcard()
+    {
+        FILE *file = fopen("demo.json", "r");
+        if (file == nullptr)
+        {
+            std::cerr << "ï¿½Ä¼ï¿½ï¿½ò¿ª´ï¿½ï¿½ï¿½" << std::end return false;
+        }
+        char buf[1024];
+        std::string line;
+        while (fgets(buf, 1024, file) != nullptr) //ï¿½ï¿½È¡Ò»ï¿½ï¿½
+            line += buf;
+        //std::cout << line << std::endl;
 
-		std::unique_ptr<Json::CharReader> const reader(jsreader.newCharReader());
-		if (!reader->parse(line.c_str(), line.c_str() + line.length(), &jsonVal, &jsonErr))
-		{
-			std::cerr << "json½âÎö´íÎó!" << std::endl;
-			return false;
-		}
-		fclose(file);
-		return true;
-	}
-	//void rebuildSDcard(const DataConfigList &tempData, std::string name)
-	//{
-	//	if (name == "µ×ÅÌ")
-	//		pathData.insert({ name ,{"chassis.txt" } }); //try_emplace ³¢ÊÔ²åÈë Èç¹ûKEY ´æÔÚ¾Í²»²åÈëÁË²»´æÔÚ¾Í²åÈë
-	//	else if (name == "ÔÆÌ¨")
-	//		pathData.insert({ name, {"head.txt"} });
-	//	else if (name == "ÎüÍÂ")
-	//		pathData.insert({ name, {"intake.txt"} });
-	//	else if (name == "Ðý×ªÆ÷")
-	//		pathData.insert({ name, {"rotateIntake.txt" } });
-	//	else if (name == "¼Ð×Ó")
-	//		pathData.insert({ name, {"capIntake.txt"} });
-	//	else if (name == "Éý½µ")
-	//		pathData.insert({ name, {"lift.txt" }		});
-	//	else if (name == "µ¯Éä")
-	//		pathData.insert({ name, {"shoot.txt"} });
-	//	else if (name == "Ç°ºópid")
-	//		pathData.insert({ name,{ "frpid.txt"} });
-	//	else if (name == "×óÓÒpid")
-	//		pathData.insert({ name, {"rotatepid.txt" }
-	//			});
-	//	else
-	//	{
-	//		std::cerr << "¶ÁÈ¡²¿¼þÃû×Ö´íÎó,Çë¼ì²é³ÌÐò" << std::endl;
-	//		return; //Ìø³ö¸Ãº¯Êý
-	//	}
-	//	configData.try_emplace(name, tempData);
-	//	bool flag = readSDcard(configData[name], name); //ÅÐ¶ÏÎÄ¼þÊÇ·ñÒÑ¾­´æÔÚ
-	//	if (!flag)
-	//	{
-	//		std::cerr << name << "Ã»ÓÐËÑË÷µ½" << name << "configÎÄ¼þ.ÖØÐÂ´´½¨!Çë×¢ÒâÖØÐÂÅäÖÃÏà¹ØÐÅÏ¢" << std::endl;
-	//		bool flag = saveData(tempData, name);
-	//		if (!flag)
-	//			std::cerr << name << " configÎÄ¼þ¶þ´Î±£´æÊ§°Ü!,Çë¼ì²éSD¿¨ÊÇ·ñ²åÈë»òÕßSD¿¨ÊÇ·ñËð»µ!" << std::endl;
-	//		else
-	//			std::cout << name << " configÎÄ¼þ´´½¨³É¹¦" << std::endl;
-	//	}
-	//}
+        std::unique_ptr<Json::CharReader> const reader(jsreader.newCharReader());
+        if (!reader->parse(line.c_str(), line.c_str() + line.length(), &jsonVal, &jsonErr))
+        {
+            std::cerr << "jsonï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!" << std::endl;
+            return false;
+        }
+        fclose(file);
+        return true;
+    }
+    //void rebuildSDcard(const DataConfigList &tempData, std::string name)
+    //{
+    //	if (name == "ï¿½ï¿½ï¿½ï¿½")
+    //		pathData.insert({ name ,{"chassis.txt" } }); //try_emplace ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½KEY ï¿½ï¿½ï¿½Ú¾Í²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë²ï¿½ï¿½ï¿½ï¿½Ú¾Í²ï¿½ï¿½ï¿½
+    //	else if (name == "ï¿½ï¿½Ì¨")
+    //		pathData.insert({ name, {"head.txt"} });
+    //	else if (name == "ï¿½ï¿½ï¿½ï¿½")
+    //		pathData.insert({ name, {"intake.txt"} });
+    //	else if (name == "ï¿½ï¿½×ªï¿½ï¿½")
+    //		pathData.insert({ name, {"rotateIntake.txt" } });
+    //	else if (name == "ï¿½ï¿½ï¿½ï¿½")
+    //		pathData.insert({ name, {"capIntake.txt"} });
+    //	else if (name == "ï¿½ï¿½ï¿½ï¿½")
+    //		pathData.insert({ name, {"lift.txt" }		});
+    //	else if (name == "ï¿½ï¿½ï¿½ï¿½")
+    //		pathData.insert({ name, {"shoot.txt"} });
+    //	else if (name == "Ç°ï¿½ï¿½pid")
+    //		pathData.insert({ name,{ "frpid.txt"} });
+    //	else if (name == "ï¿½ï¿½ï¿½ï¿½pid")
+    //		pathData.insert({ name, {"rotatepid.txt" }
+    //			});
+    //	else
+    //	{
+    //		std::cerr << "ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" << std::endl;
+    //		return; //ï¿½ï¿½ï¿½ï¿½ï¿½Ãºï¿½ï¿½ï¿½
+    //	}
+    //	configData.try_emplace(name, tempData);
+    //	bool flag = readSDcard(configData[name], name); //ï¿½Ð¶ï¿½ï¿½Ä¼ï¿½ï¿½Ç·ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½
+    //	if (!flag)
+    //	{
+    //		std::cerr << name << "Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" << name << "configï¿½Ä¼ï¿½.ï¿½ï¿½ï¿½Â´ï¿½ï¿½ï¿½!ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢" << std::endl;
+    //		bool flag = saveData(tempData, name);
+    //		if (!flag)
+    //			std::cerr << name << " configï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Î±ï¿½ï¿½ï¿½Ê§ï¿½ï¿½!,ï¿½ï¿½ï¿½ï¿½SDï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½SDï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½!" << std::endl;
+    //		else
+    //			std::cout << name << " configï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½" << std::endl;
+    //	}
+    //}
 
-	std::string UTF8ToGB(const char* str)
-	{
-		std::string result;
-		WCHAR* strSrc;
-		LPSTR szRes;
+    std::string UTF8ToGB(const char *str)
+    {
+        std::string result;
+        WCHAR *strSrc;
+        LPSTR szRes;
 
-		int i = MultiByteToWideChar(CP_UTF8, 0, str, -1, nullptr, 0);
-		strSrc = new WCHAR[i + 1];
-		MultiByteToWideChar(CP_UTF8, 0, str, -1, strSrc, i);
+        int i = MultiByteToWideChar(CP_UTF8, 0, str, -1, nullptr, 0);
+        strSrc = new WCHAR[i + 1];
+        MultiByteToWideChar(CP_UTF8, 0, str, -1, strSrc, i);
 
-		i = WideCharToMultiByte(CP_ACP, 0, strSrc, -1, nullptr, 0, nullptr, nullptr);
-		szRes = new CHAR[i + 1];
-		WideCharToMultiByte(CP_ACP, 0, strSrc, -1, szRes, i, nullptr, nullptr);
+        i = WideCharToMultiByte(CP_ACP, 0, strSrc, -1, nullptr, 0, nullptr, nullptr);
+        szRes = new CHAR[i + 1];
+        WideCharToMultiByte(CP_ACP, 0, strSrc, -1, szRes, i, nullptr, nullptr);
 
-		result = szRes;
-		delete[]strSrc;
-		delete[]szRes;
-		return result;
-	}
+        result = szRes;
+        delete[] strSrc;
+        delete[] szRes;
+        return result;
+    }
 
-	std::string GBKToUTF8(const std::string& strGBK)
-	{
-		std::string strOutUTF8 = "";
-		WCHAR* str1;
-		int n = MultiByteToWideChar(CP_ACP, 0, strGBK.c_str(), -1, nullptr, 0);
-		str1 = new WCHAR[n];
-		MultiByteToWideChar(CP_ACP, 0, strGBK.c_str(), -1, str1, n);
-		n = WideCharToMultiByte(CP_UTF8, 0, str1, -1, nullptr, 0, nullptr, nullptr);
-		char* str2 = new char[n];
-		WideCharToMultiByte(CP_UTF8, 0, str1, -1, str2, n, nullptr, nullptr);
-		strOutUTF8 = str2;
-		delete[]str1;
-		delete[]str2;
-		return strOutUTF8;
-	}
-	bool saveData()
-	{
-		FILE* file = fopen("save.json", "w");
-		if (file == nullptr)
-		{
-			std::cerr << " ±£´æÊ§°Ü" << std::endl;
-			return false;
-		}
-		std::ostringstream os;
-		std::unique_ptr<Json::StreamWriter> writer(builder.newStreamWriter());
-		writer->write(jsonVal, &os);
-		fprintf(file, "%s", os.str().c_str()); //ÖðÐÐÂ¼Èë
-		//std::string tempStr= jsonVal.toStyledString();
-		//fprintf(file, "%s", tempStr.c_str()); //ÖðÐÐÂ¼Èë
-		fclose(file);
-		return true;
-	}
-	void ÐòÁÐ»¯jsonData()
-	{
+    std::string GBKToUTF8(const std::string &strGBK)
+    {
+        std::string strOutUTF8 = "";
+        WCHAR *str1;
+        int n = MultiByteToWideChar(CP_ACP, 0, strGBK.c_str(), -1, nullptr, 0);
+        str1 = new WCHAR[n];
+        MultiByteToWideChar(CP_ACP, 0, strGBK.c_str(), -1, str1, n);
+        n = WideCharToMultiByte(CP_UTF8, 0, str1, -1, nullptr, 0, nullptr, nullptr);
+        char *str2 = new char[n];
+        WideCharToMultiByte(CP_UTF8, 0, str1, -1, str2, n, nullptr, nullptr);
+        strOutUTF8 = str2;
+        delete[] str1;
+        delete[] str2;
+        return strOutUTF8;
+    }
+    bool saveData()
+    {
+        FILE *file = fopen("save.json", "w");
+        if (file == nullptr)
+        {
+            std::cerr << " ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½" << std::endl;
+            return false;
+        }
+        std::ostringstream os;
+        std::unique_ptr<Json::StreamWriter> writer(builder.newStreamWriter());
+        writer->write(jsonVal, &os);
+        fprintf(file, "%s", os.str().c_str()); //ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½
+        //std::string tempStr= jsonVal.toStyledString();
+        //fprintf(file, "%s", tempStr.c_str()); //ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½
+        fclose(file);
+        return true;
+    }
+    void ï¿½ï¿½ï¿½Ð»ï¿½jsonData()
+    {
+    }
+    //ï¿½Ý¹ï¿½ï¿½Ó¡ ï¿½ï¿½ï¿½Ü´ï¿½Ó¡ï¿½ï¿½KEYï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    void printJson(Json::Value data)
+    {
+        Json::Value::Members mem = data.getMemberNames();
+        for (auto iter = mem.begin(); iter != mem.end(); iter++)
+        {
+            std::cout << *iter << "\t: ";
+            if (data[*iter].type() == Json::objectValue)
+            {
+                std::cout << std::endl;
+                printJson(data[*iter]);
+            }
+            else if (data[*iter].type() == Json::arrayValue)
+            {
+                std::cout << std::endl;
+                auto cnt = data[*iter].size();
+                for (auto i = 0; i < cnt; i++)
+                {
+                    printJson(data[*iter][i]);
+                }
+            }
+            else if (data[*iter].type() == Json::stringValue)
+            {
+                std::cout << data[*iter].asString() << std::endl;
+            }
+            else if (data[*iter].type() == Json::realValue)
+            {
+                std::cout << data[*iter].asDouble() << std::endl;
+            }
+            else if (data[*iter].type() == Json::uintValue)
+            {
+                std::cout << data[*iter].asUInt() << std::endl;
+            }
+            else
+            {
+                std::cout << data[*iter].asInt() << std::endl;
+            }
+        }
+        return;
+    }
+    void printJsonII(Json::Value data)
+    {
+        Json::Value::Members members;
+        members = data.getMemberNames();                                                                             // ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½keyï¿½ï¿½Öµ
+        for (Json::Value::Members::iterator iterMember = members.begin(); iterMember != members.end(); iterMember++) // ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½key
+        {
+            std::string strKey = *iterMember;
+            if (data[strKey.c_str()].isString())
+            {
+                std::string strVal = data[strKey.c_str()].asString();
+                std::cout << strKey.c_str() << ":" << strVal.c_str() << std::endl;
+            }
+            else if (data[strKey.c_str()].isInt())
+            {
+                int iVal = data[strKey.c_str()].asInt();
+                std::cout << strKey.c_str() << ":" << iVal << std::endl;
+            }
+            else if (data[strKey.c_str()].isDouble())
+            {
+                double dVal = data[strKey.c_str()].asDouble();
+                std::cout << strKey.c_str() << ":" << dVal << std::endl;
+            }
+            else
+            {
+                std::string strVal = data[strKey.c_str()].toStyledString();
+                std::cout << strKey.c_str() << ":" << strVal.c_str() << std::endl;
+            }
+        }
+    }
 
-
-	}
-	//µÝ¹é´òÓ¡ ²»ÄÜ´òÓ¡´øKEYµÄÊý×é
-	void printJson(Json::Value  data)
-	{
-		Json::Value::Members mem = data.getMemberNames();
-		for (auto iter = mem.begin(); iter != mem.end(); iter++)
-		{
-			std::cout << *iter << "\t: ";
-			if (data[*iter].type() == Json::objectValue)
-			{
-				std::cout << std::endl;
-				printJson(data[*iter]);
-			}
-			else if (data[*iter].type() == Json::arrayValue)
-			{
-				std::cout << std::endl;
-				auto cnt = data[*iter].size();
-				for (auto i = 0; i < cnt; i++)
-				{
-					printJson(data[*iter][i]);
-				}
-			}
-			else if (data[*iter].type() == Json::stringValue)
-			{
-				std::cout << data[*iter].asString() << std::endl;
-			}
-			else if (data[*iter].type() == Json::realValue)
-			{
-				std::cout << data[*iter].asDouble() << std::endl;
-			}
-			else if (data[*iter].type() == Json::uintValue)
-			{
-				std::cout << data[*iter].asUInt() << std::endl;
-			}
-			else
-			{
-				std::cout << data[*iter].asInt() << std::endl;
-			}
-		}
-		return;
-	}
-	void printJsonII(Json::Value  data)
-	{
-		Json::Value::Members members;
-		members = data.getMemberNames();   // »ñÈ¡ËùÓÐkeyµÄÖµ
-		for (Json::Value::Members::iterator iterMember = members.begin(); iterMember != members.end(); iterMember++)   // ±éÀúÃ¿¸ökey
-		{
-			std::string strKey = *iterMember;
-			if (data[strKey.c_str()].isString())
-			{
-				std::string strVal = data[strKey.c_str()].asString();
-				std::cout << strKey.c_str() << ":" << strVal.c_str() << std::endl;
-			}
-			else if (data[strKey.c_str()].isInt())
-			{
-				int iVal = data[strKey.c_str()].asInt();
-				std::cout << strKey.c_str() << ":" << iVal << std::endl;
-			}
-			else if (data[strKey.c_str()].isDouble())
-			{
-				double dVal = data[strKey.c_str()].asDouble();
-				std::cout << strKey.c_str() << ":" << dVal << std::endl;
-			}
-			else
-			{
-				std::string strVal = data[strKey.c_str()].toStyledString();
-				std::cout << strKey.c_str() << ":" << strVal.c_str() << std::endl;
-			}
-		}
-	}
-private:
+  private:
 };
-extern SystemData* sysData;
+extern SystemData *sysData;

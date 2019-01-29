@@ -1,6 +1,8 @@
 #include "main.h"
+#include "system/fifo_map.hpp"
 #include "testconfig.hpp"
 #include <iostream>
+using nlohmann::fifo_map;
 
 // SystemData* sysData;
 // Chassis* chassis;
@@ -11,8 +13,15 @@
 void init()
 {
 
-    std::for_each(userData.begin(), userData.end(), [](auto it) { std::cout << it << std::endl; });
+    fifo_map<std::string, int> m{{"陈老师", 100}, {"狗老鼠", 50}, {"大挂", 80}, {"薄薄", 60}};
 
+    for (auto &it : m)
+        std::cout << it.first << " " << it.second << std::endl;
+    std::cout << m.find("大挂")->second << std::endl;
+    // std::for_each(userData.begin(), userData.end(), [](auto it) { std::cout << it << std::endl; });
+    //std::cout << userData["底盘"] << std::endl;
+    // std::cout
+    //     << userData.dump(4) << std::endl;
     // Motor a(val["����"]["���"][3]);
     // ADI gyro(val["����"]["ADI"][0]);
     // on::Value::Members key = val["����"]["���"]["��ǰ"].getMemberNames();
