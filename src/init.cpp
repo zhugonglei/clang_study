@@ -1,8 +1,7 @@
 #include "main.h"
-#include "system/fifo_map.hpp"
+#include "system/tsl/ordered_map.h"
 #include "testconfig.hpp"
 #include <iostream>
-using nlohmann::fifo_map;
 
 // SystemData* sysData;
 // Chassis* chassis;
@@ -13,7 +12,7 @@ using nlohmann::fifo_map;
 void init()
 {
 
-    fifo_map<std::string, int> m{{"陈老师", 100}, {"狗老鼠", 50}, {"大挂", 80}, {"薄薄", 60}};
+    tsl::ordered_map<std::string, int> m{{"陈老师", 100}, {"狗老鼠", 50}, {"大挂", 80}, {"薄薄", 60}};
 
     for (auto &it : m)
         std::cout << it.first << " " << it.second << std::endl;
